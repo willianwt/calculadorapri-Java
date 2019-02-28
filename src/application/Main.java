@@ -19,16 +19,14 @@ public class Main {
 		
 		for (int i = 0; i < disc.getDisciplinas(); i++) {
 			sc.nextLine();
-
-			System.out.println("Informe o nomde da " + (i+1) + "ª disciplina: ");
-			String nomes = sc.nextLine();
-			System.out.println("Informe o número de questões da " + (i+1) + "ª Disciplina:");
-			int qtdQuestoes = sc.nextInt();
-			System.out.println("Informe o número de acertos da " + (i+1) + "ª Disciplina:");
-			int qtdAcertos = sc.nextInt();
+			dados[i] = new DadosDisciplinas();
 			
-
-			dados[i] = new DadosDisciplinas(nomes, qtdAcertos, qtdQuestoes);
+			System.out.println("Informe o nomde da " + (i+1) + "ª disciplina: ");
+			dados[i].setNomes(sc.nextLine());
+			System.out.println("Informe o número de questões da " + (i+1) + "ª Disciplina:");
+			dados[i].setQtdQuestoes(sc.nextInt());
+			System.out.println("Informe o número de acertos da " + (i+1) + "ª Disciplina:");
+			dados[i].setQtdAcertos(sc.nextInt());			
 			
 			totalQuestoes.setTotalAcertos(dados[i].getQtdAcertos());
 			totalQuestoes.setTotalQuestoes(dados[i].getQtdQuestoes());
@@ -47,7 +45,7 @@ public class Main {
 		System.out.printf("Sua nota Global é %.2f \n", totalQuestoes.getNotaGlobal());
 		
 		for (int i = 0; i < dados.length; i++) {
-			System.out.println("<<<<<<<<<" + dados[i].getNomes() + ">>>>>>>>>>>");
+			System.out.println("<<<<<<<<< " + dados[i].getNomes() + " >>>>>>>>>>>");
 			System.out.println("Voce acertou " + dados[i].getQtdAcertos() + " de " + dados[i].getQtdQuestoes() + ".");
 			System.out.printf("Sua nota específica nesta disciplina é %.2f %n", dados[i].getNotaMateria());
 			System.out.printf("A nota total em " + dados[i].getNomes() + " é %.2f. %n", (totalQuestoes.getNotaGlobal() + dados[i].getNotaMateria()));

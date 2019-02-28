@@ -12,11 +12,6 @@ public class DadosDisciplinas {
 	public DadosDisciplinas() {
 	}
 	
-	public DadosDisciplinas(String nomes, int qtdAcertos, int qtdQuestoes) {
-		this.nomes = nomes;
-		this.qtdAcertos = qtdAcertos;
-		this.qtdQuestoes = qtdQuestoes;
-	}
 	
 	public double getNotaMateria() {
 		return notaMateria;
