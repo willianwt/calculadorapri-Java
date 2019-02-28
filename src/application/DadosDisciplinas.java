@@ -5,8 +5,10 @@ public class DadosDisciplinas {
 	private String nomes;
 	private int qtdAcertos;
 	private int qtdQuestoes;
+	private double notaMateria;
+
 	
-	
+
 	public DadosDisciplinas() {
 	}
 	
@@ -14,6 +16,14 @@ public class DadosDisciplinas {
 		this.nomes = nomes;
 		this.qtdAcertos = qtdAcertos;
 		this.qtdQuestoes = qtdQuestoes;
+	}
+	
+	public double getNotaMateria() {
+		return notaMateria;
+	}
+
+	public void setNotaMateria(double notaMateria) {
+		this.notaMateria = notaMateria;
 	}
 
 	public String getNomes() {
@@ -34,4 +44,5 @@ public class DadosDisciplinas {
 	public void setQtdQuestoes(int qtdQuestoes) {
 		this.qtdQuestoes = qtdQuestoes;
 	}
+
 }

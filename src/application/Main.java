@@ -1,7 +1,8 @@
 package application;
 
 import java.util.Scanner;
-
+import application.Totais;
+import application.DadosDisciplinas;
 public class Main {
 	
 	public static void main(String[] args) {
@@ -14,6 +15,7 @@ public class Main {
 		disc.setDisciplinas(sc.nextInt());
 		
 		DadosDisciplinas[] dados = new DadosDisciplinas[disc.getDisciplinas()];
+		Totais totalQuestoes = new Totais();
 		
 		for (int i = 0; i < disc.getDisciplinas(); i++) {
 			sc.nextLine();
@@ -25,10 +27,34 @@ public class Main {
 			System.out.println("Informe o número de acertos da " + (i+1) + "ª Disciplina:");
 			int qtdAcertos = sc.nextInt();
 			
-			dados[i] = new DadosDisciplinas(nomes, qtdAcertos, qtdQuestoes);
 
+			dados[i] = new DadosDisciplinas(nomes, qtdAcertos, qtdQuestoes);
+			
+			totalQuestoes.setTotalAcertos(dados[i].getQtdAcertos());
+			totalQuestoes.setTotalQuestoes(dados[i].getQtdQuestoes());
+			dados[i].setNotaMateria(totalQuestoes.notaMateria(dados[i].getQtdQuestoes(), dados[i].getQtdAcertos()));
+			
+
+		}
+		totalQuestoes.setNotaGlobal(totalQuestoes.notaGlobal(totalQuestoes.getTotalQuestoes(), totalQuestoes.getTotalAcertos()));
+
+		
+		// Resultados
+		
+		System.out.println("Resultado:");
+		System.out.println("Sua prova continha " + totalQuestoes.getTotalQuestoes() + " questões.");
+		System.out.println("Você acertou no total " + totalQuestoes.getTotalAcertos() + " questões.");
+		System.out.printf("Sua nota Global é %.2f \n", totalQuestoes.getNotaGlobal());
+		
+		for (int i = 0; i < dados.length; i++) {
+			System.out.println("<<<<<<<<<" + dados[i].getNomes() + ">>>>>>>>>>>");
+			System.out.println("Voce acertou " + dados[i].getQtdAcertos() + " de " + dados[i].getQtdQuestoes() + ".");
+			System.out.printf("Sua nota específica nesta disciplina é %.2f %n", dados[i].getNotaMateria());
+			System.out.printf("A nota total em " + dados[i].getNomes() + " é %.2f. %n", (totalQuestoes.getNotaGlobal() + dados[i].getNotaMateria()));
+			System.out.println(" -----------------------------------------------------------------------");
 		}
 		sc.close();
 	}
 
 }
+
